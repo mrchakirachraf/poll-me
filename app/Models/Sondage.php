@@ -9,6 +9,11 @@ class Sondage extends Model
 {
     use HasFactory;
 
+
+    protected $primaryKey = 'id_sondage'; // Specify the primary key column name
+    public $incrementing = true; // Ensure it's an auto-incrementing key
+    protected $keyType = 'int'; // The key type is integer
+
     protected $fillable = ['title', 'description', 'id_user'];
 
     public function questions()

@@ -23,7 +23,7 @@ use App\Http\Controllers\SondageController;
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/sondages', [SondageController::class, 'index']);
     Route::post('/sondages', [SondageController::class, 'store']);
-    Route::get('/sondages/{id}', [SondageController::class, 'show']);
+    Route::get('/sondages/{id_sondage}', [SondageController::class, 'show']);
     Route::get('/dashboard', [SondageController::class, 'stats']);
 });
 
