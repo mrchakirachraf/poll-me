@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['text', 'id_question'];
+
+    public function question() {
+        return $this->belongsTo(Question::class, 'id_question');
+    }
+    
 }
