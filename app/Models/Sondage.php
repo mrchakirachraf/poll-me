@@ -9,7 +9,6 @@ class Sondage extends Model
 {
     use HasFactory;
 
-
     protected $primaryKey = 'id_sondage'; // Specify the primary key column name
     public $incrementing = true; // Ensure it's an auto-incrementing key
     protected $keyType = 'int'; // The key type is integer
@@ -23,6 +22,16 @@ class Sondage extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'id_user');
+    }
+
+    // Automatically delete related questions when the sondage is deleted
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($sondage) {
+            $sondage->questions->each->delete();
+        });
     }
     
 }

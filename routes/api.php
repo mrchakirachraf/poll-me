@@ -22,9 +22,17 @@ use App\Http\Controllers\SondageController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/sondages', [SondageController::class, 'index']);
-    Route::post('/sondages', [SondageController::class, 'store']);
+    Route::post('/sondages', [SondageController::class, 'createSondage']);
     Route::get('/sondages/{id_sondage}', [SondageController::class, 'show']);
-    Route::get('/dashboard', [SondageController::class, 'stats']);
+
+    Route::post('/sondages/{id_sondage}/responses', [SondageController::class, 'handleParticipation']);
+    Route::delete('/sondages/{id_sondage}', [SondageController::class, 'deleteSondage']);
+    Route::put('/sondages/{id}', [SondageController::class, 'updateSondage']);
+
+
+    Route::get('/sondages/user/{id_user}', [SondageController::class, 'getSondagesByUser']);
+    Route::get('/sondages/{id_sondage}/statistics', [SondageController::class, 'getSondageStatistics']);
+
 });
 
 use App\Http\Controllers\AuthController;

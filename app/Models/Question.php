@@ -20,8 +20,27 @@ class Question extends Model
         return $this->hasMany(Option::class, 'id_question');
     }
 
+    public function responses()
+    {
+        return $this->hasMany(Reponse::class, 'id_question');
+    }
+
     public function sondage() {
         return $this->belongsTo(Sondage::class, 'id_sondage');
+    }
+
+
+    // Automatically delete related options when the question is deleted
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($question) {
+            
+            $question->options->each->delete();
+            // Delete related responses
+            $question->reponses->each->delete();
+        });
     }
     
 }
