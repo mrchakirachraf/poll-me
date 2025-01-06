@@ -1,0 +1,12 @@
+.PollList_container {
+    padding: 20px;
+}
+
+.PollList_flex {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}

@@ -6,6 +6,10 @@ import HomePage from './routes/HomePage';
 import SignIn from './routes/SignIn';
 import SignUp from './routes/SignUp';
 import PollMe from './routes/PollMe';
+import PollPage from './routes/PollPage';
+import UserPage from './routes/UserPage';
+import StatisticsPage from './routes/StatisticsPage';
+import DeletePollPage from './routes/DeletePollPage';
 
 
 import './App.css';
@@ -18,7 +22,12 @@ const App = () => (
       {/* Pages with Navbar */}
       <Route element={<WithNavbar />}>
         <Route path='/home-page' element={<HomePage />} />
-        
+        <Route path='/sondages/:id_sondage' element={<PollPage />} />
+        <Route path='/sondages/user/:id_user' element={<UserPage />} />
+        <Route path="/sondages/:id_sondage/statistics" element={<StatisticsPage />} />
+        <Route path="/sondages/:id_sondage/delete" element={<DeletePollPage />} />
+
+         
       </Route>
       {/* Pages without Navbar */}
       <Route element={<WithoutNavbar />}>

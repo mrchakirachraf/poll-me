@@ -34,13 +34,17 @@ class Question extends Model
     protected static function boot()
     {
         parent::boot();
-
+    
         static::deleting(function ($question) {
-            
-            $question->options->each->delete();
-            // Delete related responses
-            $question->reponses->each->delete();
+            if ($question->options) {
+                $question->options->each->delete();
+            }
+    
+            if ($question->reponses) {
+                $question->reponses->each->delete();
+            }
         });
     }
+    
     
 }

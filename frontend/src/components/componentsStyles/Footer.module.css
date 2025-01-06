@@ -1,0 +1,6 @@
+.socials a{
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+.socials a:hover{
+    color: #FFC83C;
+}

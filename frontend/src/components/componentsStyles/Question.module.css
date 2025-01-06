@@ -1,0 +1,6 @@
+.Option_label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}

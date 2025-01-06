@@ -28,10 +28,13 @@ class Sondage extends Model
     protected static function boot()
     {
         parent::boot();
-
+    
         static::deleting(function ($sondage) {
-            $sondage->questions->each->delete();
+            if ($sondage->questions) {
+                $sondage->questions->each->delete();
+            }
         });
     }
+    
     
 }

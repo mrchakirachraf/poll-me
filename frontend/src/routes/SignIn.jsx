@@ -24,7 +24,9 @@ const SignIn = () => {
             if (response.status === 200) {
                 const data = await response.json();
                 const { token } = data;
+                const { id_user } = data.user;
 
+                localStorage.setItem('id_user', id_user);
                 // Save the token to localStorage
                 localStorage.setItem('authToken', token);
                 
