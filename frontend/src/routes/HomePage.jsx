@@ -20,7 +20,7 @@ const HomePage = () => {
 
                 if (response.status === 200) {
                     const data = await response.json();
-                    setPolls(data); // Set the polls data in state
+                    setPolls(data); 
                 } else {
                     const errorData = await response.json();
                     setErrorMessage(errorData.message || 'Failed to fetch polls.');
@@ -33,7 +33,7 @@ const HomePage = () => {
         };
 
         fetchPolls();
-    }, []); // Empty dependency array ensures this runs once when the component mounts
+    }, []);
 
     return (
         <div className={styles.PollList_container}>

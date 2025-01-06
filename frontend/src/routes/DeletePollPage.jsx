@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const DeletePollPage = () => {
-    const { id_sondage } = useParams(); // Get poll ID from the URL
+    const { id_sondage } = useParams();
     const navigate = useNavigate();
 
     const handleDelete = async () => {
@@ -19,7 +19,7 @@ const DeletePollPage = () => {
         );
 
         if (response.status === 200) {
-            navigate(`/sondages/user/${localStorage.getItem("id_user")}`); // Redirect to user page after successful deletion
+            navigate(`/sondages/user/${localStorage.getItem("id_user")}`); 
         } else {
             const errorData = await response.json();
             alert(errorData.message || "Failed to delete the poll.");
@@ -30,7 +30,7 @@ const DeletePollPage = () => {
     };
 
     const handleCancel = () => {
-        navigate(`/sondages/user/${localStorage.getItem("id_user")}`); // Redirect back to user page without deleting
+        navigate(`/sondages/user/${localStorage.getItem("id_user")}`);
     };
 
     return (

@@ -27,12 +27,10 @@ const SignIn = () => {
                 const { id_user } = data.user;
 
                 localStorage.setItem('id_user', id_user);
-                // Save the token to localStorage
                 localStorage.setItem('authToken', token);
                 
                 navigate('/home-page');
             } else {
-                // Display error message if status is not 200
                 const errorData = await response.json();
                 setErrorMessage(errorData.message || 'An error occurred while signing in.');
             }

@@ -1,0 +1,93 @@
+/* Base Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0a6464; /* Match your desired palette */
+    color: white;
+    position: relative;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .navItem {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .navItem:hover {
+    color: #ffc83c; /* Accent color */
+  }
+  
+  .logoutBtn {
+    background-color: #ff5040; /* Red for logout */
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logoutBtn:hover {
+    background-color: #ff7760;
+  }
+  
+  /* Hamburger Menu (Visible on Small Screens) */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: transform 0.3s;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0a6464;
+    width: 100%;
+    padding: 1rem;
+    z-index: 10;
+  }
+  
+  .sidebar.show {
+    display: flex;
+  }
+  
+  .sidebar .navItem {
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .navLinks {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  }
+  

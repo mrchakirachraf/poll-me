@@ -4,7 +4,7 @@ import Card from '../components/Card';
 import styles from '../styles/UserPage.module.css';
 
 const UserPage = () => {
-    const { id_user } = useParams(); // Extract the user ID from the URL
+    const { id_user } = useParams();
     const [userPolls, setUserPolls] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ const UserPage = () => {
 
                 if (response.status === 200) {
                     const data = await response.json();
-                    setUserPolls(data); // Save the user's polls
+                    setUserPolls(data);
                 } else {
                     const errorData = await response.json();
                     setErrorMessage(errorData.message || 'Failed to fetch user polls.');

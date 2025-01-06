@@ -5,11 +5,9 @@ import styles from "./componentsStyles/Footer.module.css"
 const Footer = () => {
   return (
     <footer className="bg-[#0A6464] text-center text-white py-6 w-full">
-      {/* Texte "Follow us" */}
       <p className="font-semibold mb-4">Follow us</p>
 
-      {/* Icônes sociales */}
-      <div className={`${styles.socials} flex justify-center space-x-10`}> {/* Ajustez space-x */}
+      <div className={`${styles.socials} flex justify-center space-x-10`}>
         <a
           href="https://facebook.com"
           target="_blank"
@@ -36,10 +34,8 @@ const Footer = () => {
         </a>
       </div>
 
-      {/* Ligne de séparation */}
       <hr className="w-full border-t border-white mt-5" />
 
-      {/* Adresse e-mail */}
       <p className="mt-4 text-sm">pollMe@gmail.com</p>
     </footer>
   );

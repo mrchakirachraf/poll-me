@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import Question from '../components/Question'; // Reusable component for questions
+import Question from '../components/Question';
 import styles from '../styles/PollPage.module.css';
 import Button from '../components/Button';
 
 const PollPage = () => {
-    const { id_sondage } = useParams(); // Get the poll ID from the route params
+    const { id_sondage } = useParams();
     const [poll, setPoll] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(true);
@@ -78,7 +78,7 @@ const PollPage = () => {
             });
     
             if (response.status === 200) {
-                navigate('/home-page'); // Redirect to home page on success
+                navigate('/home-page');
             } else {
                 const errorData = await response.json();
                 setErrorMessage(errorData.message || 'Failed to submit your responses.');

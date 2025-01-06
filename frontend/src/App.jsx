@@ -10,6 +10,8 @@ import PollPage from './routes/PollPage';
 import UserPage from './routes/UserPage';
 import StatisticsPage from './routes/StatisticsPage';
 import DeletePollPage from './routes/DeletePollPage';
+import UpdatePoll from './routes/UpdatePoll';
+import AddPoll from './routes/AddPoll';
 
 
 import './App.css';
@@ -25,7 +27,8 @@ const App = () => (
         <Route path='/sondages/:id_sondage' element={<PollPage />} />
         <Route path='/sondages/user/:id_user' element={<UserPage />} />
         <Route path="/sondages/:id_sondage/statistics" element={<StatisticsPage />} />
-        <Route path="/sondages/:id_sondage/delete" element={<DeletePollPage />} />
+        <Route path="/sondages/:id_sondage/update" element={<UpdatePoll />} />
+        <Route path="/sondages/addPoll" element={<AddPoll />} />
 
          
       </Route>
@@ -34,6 +37,7 @@ const App = () => (
         <Route path="" element={<PollMe />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/sondages/:id_sondage/delete" element={<DeletePollPage />} />
       </Route>
 
     </Routes>
