@@ -38,7 +38,7 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'User registered successfully.',
             'user' => $user
-        ], 201); 
+        ], 200); 
     }
 
     public function login(Request $request)
@@ -81,7 +81,7 @@ class AuthController extends Controller
             'message' => 'Login successful.',
             'token' => $token,
             'user' => $user
-        ], 201); 
+        ], 200); 
     }
 
     public function logout(Request $request)
@@ -94,7 +94,7 @@ class AuthController extends Controller
             // Delete all tokens for the user
             $request->user()->tokens()->delete();
 
-            return response()->json(['message' => 'Logged out successfully'], 201);
+            return response()->json(['message' => 'Logged out successfully'], 200);
         } catch (\Exception $e) {
             // Handle any unexpected errors
             return response()->json([

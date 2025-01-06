@@ -8,8 +8,8 @@ import SignUp from './routes/SignUp';
 import PollMe from './routes/PollMe';
 
 
-import './App.css'
-import "./tailwind.css"
+import './App.css';
+import "./tailwind.css";
 
 const App = () => (
   <Router>

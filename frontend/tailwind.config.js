@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors : {
+        "DeepTale" : "#0A6464",
+      }
+    },
   },
   plugins: [],
 }

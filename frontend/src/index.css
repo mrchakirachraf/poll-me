@@ -15,7 +15,6 @@
 
 a {
   font-weight: 500;
-  /* color: #646cff; */
   text-decoration: inherit;
 }
 
@@ -52,15 +51,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+*:focus{
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
