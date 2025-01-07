@@ -89,17 +89,17 @@ const PollPage = () => {
     };
     
     if (loading) {
-        return <p className="text-center">Loading...</p>;
+        return <p className="alertInfo">Loading...</p>;
     }
 
     if (errorMessage) {
-        return <p className="text-center text-red-500">{errorMessage}</p>;
+        return <p className="alertDanger">{errorMessage}</p>;
     }
 
     return (
         <div className={styles.PollPage_container}>
-            <h1 className="text-center text-2xl font-bold">{poll.title}</h1>
-            <p className="text-center mb-4">{poll.description}</p>
+            <h1 className="text-center text-3xl font-bold">{poll.title}</h1>
+            <p className="text-center text-xl my-4 mb-4">{poll.description}</p>
             {poll.questions.map((question) => (
                 <Question
                     key={question.id_question}

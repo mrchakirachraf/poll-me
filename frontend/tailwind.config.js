@@ -8,6 +8,8 @@ export default {
     extend: {
       colors : {
         "DeepTale" : "#0A6464",
+        "SoftCoral" : "#FA9684",
+        "MutedCyan":"#0A8C8C"
       }
     },
   },

@@ -74,7 +74,7 @@ const SignIn = () => {
                             />
                         </div>
                         {errorMessage && (
-                            <div className={styles.error_message}>
+                            <div className="alertDanger">
                                 <p>{errorMessage}</p>
                             </div>
                         )}

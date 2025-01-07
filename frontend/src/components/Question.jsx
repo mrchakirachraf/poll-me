@@ -15,7 +15,7 @@ const Question = ({ question, response, onChange }) => {
 
     return (
         <div className={styles.Question_container}>
-            <h3 className="font-bold mb-2">{question.text}</h3>
+            <h3 className="font-bold text-xl mb-2">{question.text}</h3>
             <div className={styles.Options_container}>
                 {question.options.map((option) => (
                     <label key={option.id_option} className={styles.Option_label}>

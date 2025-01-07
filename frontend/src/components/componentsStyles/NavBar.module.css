@@ -16,6 +16,7 @@
   
   .navLinks {
     display: flex;
+    align-items: center;
     gap: 2rem;
   }
   
@@ -31,7 +32,7 @@
   }
   
   .logoutBtn {
-    background-color: #ff5040; /* Red for logout */
+    background-color: #0A8C8C;
     border: none;
     padding: 0.5rem 1rem;
     color: white;
@@ -41,7 +42,7 @@
   }
   
   .logoutBtn:hover {
-    background-color: #ff7760;
+    background-color: #FFC83C;
   }
   
   /* Hamburger Menu (Visible on Small Screens) */

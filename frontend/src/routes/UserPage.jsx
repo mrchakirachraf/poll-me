@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import styles from '../styles/UserPage.module.css';
+import Button from '../components/Button';
 
 const UserPage = () => {
     const { id_user } = useParams();
@@ -38,17 +39,22 @@ const UserPage = () => {
     }, [id_user]);
 
     if (loading) {
-        return <p className="text-center">Loading...</p>;
+        return <p className="alertInfo">Loading...</p>;
     }
 
     if (errorMessage) {
-        return <p className="text-center text-red-500">{errorMessage}</p>;
+        return <p className="alertDanger">{errorMessage}</p>;
     }
 
     return (
         <div className={styles.UserPage_container}>
-            <h1 className="text-center text-2xl font-bold">Your Polls</h1>
-            <div className={styles.UserPage_flex}>
+            <div className='my-10' style={{position:"relative"}}>
+                <h1 className="text-center text-2xl lg:text-3xl font-bold">My Polls</h1>
+                <Link style={{position:"absolute",top:"0",right:"0"}} className='inline' to={`/sondages/addPoll`}>
+                    <Button style={{}} class="btn_MutedCyan w-32 lg:w-52" text='Add new poll'></Button>
+                </Link>
+            </div>
+            <div className={`mt-10 ${styles.UserPage_flex}`}>
                 {userPolls.length > 0 ? (
                     userPolls.map((poll) => (
                         <div>
@@ -60,10 +66,10 @@ const UserPage = () => {
                             />
                             <div className={`${styles.buttonsGroup} mt-5`}>
                                 <Link className='inline' to={`/sondages/${poll.id_sondage}/update`}>
-                                    <button className='btn_DeepTale w-fit lg:w-32'>Modify</button>
+                                    <button className='btn_MutedCyan w-fit lg:w-32'>Modify</button>
                                 </Link>
                                 <Link className='inline' to={`/sondages/${poll.id_sondage}/delete`}>
-                                    <button className='btn_DeepTale w-fit lg:w-32'>Delete</button>
+                                    <button className='btn_Red w-fit lg:w-32'>Delete</button>
                                 </Link>
                             </div>
                         </div>

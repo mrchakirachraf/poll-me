@@ -57,6 +57,10 @@ button:focus-visible {
   box-shadow: none !important;
 }
 
+main{
+  min-height: 100vh;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     background-color: #ffffff;
