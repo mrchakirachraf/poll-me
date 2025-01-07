@@ -85,15 +85,15 @@ const AddPoll = () => {
     return (
         <div className="container mx-auto lg:px-28 mt-10">
             <div className="relative">
-                <h1 className="text-3xl text-center font-bold mb-10">Add New Poll</h1>
+                <h1 className="text-white text-3xl text-center font-bold mb-10">Add New Poll</h1>
                 <Link className='inline absolute top-0 left-0' to={`/sondages/user/${localStorage.getItem("id_user")}`}>
                     <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='<--'></Button>
                 </Link>
             </div>
             {error && <p className="alertDanger">{error}</p>}
-            <form onSubmit={handleSubmit}>
+            <form className="bg-MutedCyan0.1 p-4 lg:p-12 rounded-2xl mb-10" onSubmit={handleSubmit}>
                 <div className="mb-4">
-                <label className="block text-xl lg:text-2xl font-bold mb-2">Title</label>
+                <label className="block text-DeepTale text-xl lg:text-2xl font-bold mb-2">Title</label>
                 <input
                     type="text"
                     className="w-full bg-[#D9D9D9] border border-gray-300 p-2 rounded-xl text-xl"
@@ -104,7 +104,7 @@ const AddPoll = () => {
                 />
                 </div>
                 <div className="mb-4">
-                <label className="block text-xl lg:text-2xl  font-bold mb-2">Description</label>
+                <label className="block  text-DeepTale text-xl lg:text-2xl  font-bold mb-2">Description</label>
                 <textarea
                     className="w-full bg-[#D9D9D9] border border-gray-300 p-2 rounded-xl text-xl"
                     value={pollData.description}
@@ -113,7 +113,7 @@ const AddPoll = () => {
                     required
                 />
                 </div>
-                <h2 className="text-xl lg:text-2xl  my-2  font-bold mb-4">Questions</h2>
+                <h2 className=" text-DeepTale text-xl lg:text-2xl  my-2  font-bold mb-4">Questions</h2>
                 {pollData.questions.map((question, qIndex) => (
                     <div key={qIndex} className="mb-6">
                         <div className="flex items-center justify-between mb-2">
@@ -132,7 +132,7 @@ const AddPoll = () => {
                             onChange={(e) =>
                             handleQuestionChange(qIndex, "type", e.target.value)
                             }
-                            className="ml-4 bg-[#D9D9D9] p-2 border border-gray-300 rounded-xl text-xl"
+                            className="ml-4 text-DeepTale bg-[#D9D9D9] p-2 border border-gray-300 rounded-xl text-xl"
                         >
                             <option value="choix_unique">Single Choice</option>
                             <option value="choix_multiple">Multiple Choice</option>
@@ -145,7 +145,7 @@ const AddPoll = () => {
                             Remove
                         </button>
                         </div>
-                        <h3 className="font-bold text-xl my-2 ">Options</h3>
+                        <h3 className="font-bold text-DeepTale text-xl my-2 ">Options</h3>
                         {question.options.map((option, oIndex) => (
                         <div key={oIndex} className="flex items-center mb-2">
                             <input
@@ -163,7 +163,7 @@ const AddPoll = () => {
                             className="ml-4 btn_Red  px-4 py-2"
                             onClick={() => removeOption(qIndex, oIndex)}
                             >
-                            Remove
+                                Remove
                             </button>
                         </div>
                     ))}

@@ -23,7 +23,7 @@
 
 #overlay > div:nth-child(2){
     width: 40%;
-    background-color: white;
+    background-color: rgb(230, 239, 239);
     border-radius: 70px;
     padding: 30px;
     padding-top: 50px;

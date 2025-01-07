@@ -37,12 +37,12 @@ const HomePage = () => {
 
     return (
         <div className={styles.PollList_container}>
-            <h1 className="text-center text-2xl lg:text-3xl font-bold my-10">Available Polls</h1>
+            <h1 className="text-white text-center text-2xl lg:text-3xl font-bold my-10">Available Polls</h1>
 
             {loading ? (
                 <p className="alertInfo">Loading...</p>
             ) : errorMessage ? (
-                <div className="alertDanger">
+                <div className="alertInfo">
                     <p>{errorMessage}</p>
                 </div>
             ) : (

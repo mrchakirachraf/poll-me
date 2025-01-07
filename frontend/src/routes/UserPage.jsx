@@ -38,46 +38,56 @@ const UserPage = () => {
         fetchUserPolls();
     }, [id_user]);
 
-    if (loading) {
-        return <p className="alertInfo">Loading...</p>;
-    }
+    // if (loading) {
+    //     return <p className="alertInfo">Loading...</p>;
+    // }
 
-    if (errorMessage) {
-        return <p className="alertDanger">{errorMessage}</p>;
-    }
+    // if (errorMessage) {
+    //     return <p className="alertDanger">{errorMessage}</p>;
+    // }
 
     return (
         <div className={styles.UserPage_container}>
             <div className='my-10' style={{position:"relative"}}>
-                <h1 className="text-center text-2xl lg:text-3xl font-bold">My Polls</h1>
+                <h1 className="text-white text-center text-2xl lg:text-3xl font-bold">My Polls</h1>
                 <Link style={{position:"absolute",top:"0",right:"0"}} className='inline' to={`/sondages/addPoll`}>
                     <Button style={{}} class="btn_MutedCyan w-32 lg:w-52" text='Add new poll'></Button>
                 </Link>
             </div>
-            <div className={`mt-10 ${styles.UserPage_flex}`}>
-                {userPolls.length > 0 ? (
-                    userPolls.map((poll) => (
-                        <div>
-                            <Card
-                                key={poll.id_sondage}
-                                link = {`/sondages/${poll.id_sondage}/statistics`}
-                                title={poll.title}
-                                description={poll.description}
-                            />
-                            <div className={`${styles.buttonsGroup} mt-5`}>
-                                <Link className='inline' to={`/sondages/${poll.id_sondage}/update`}>
-                                    <button className='btn_MutedCyan w-fit lg:w-32'>Modify</button>
-                                </Link>
-                                <Link className='inline' to={`/sondages/${poll.id_sondage}/delete`}>
-                                    <button className='btn_Red w-fit lg:w-32'>Delete</button>
-                                </Link>
+            {loading ? (
+                <p className="alertInfo">Loading...</p>
+            ) : errorMessage ? (
+                <div className="alertDanger">
+                    <p>{errorMessage}</p>
+                </div>
+            ) : (
+                <div className={`mt-10 ${styles.UserPage_flex}`}>
+                    {userPolls.length > 0 ? (
+                        userPolls.map((poll) => (
+                            <div>
+                                <Card
+                                    key={poll.id_sondage}
+                                    link = {`/sondages/${poll.id_sondage}/statistics`}
+                                    title={poll.title}
+                                    description={poll.description}
+                                />
+                                <div className={`${styles.buttonsGroup} mt-5`}>
+                                    <Link className='inline' to={`/sondages/${poll.id_sondage}/update`}>
+                                        <button className='btn_MutedCyan w-fit lg:w-32'>Modify</button>
+                                    </Link>
+                                    <Link className='inline' to={`/sondages/${poll.id_sondage}/delete`}>
+                                        <button className='btn_Red w-fit lg:w-32'>Delete</button>
+                                    </Link>
+                                </div>
                             </div>
+                        ))
+                    ) : (
+                        <div className="w-full alertInfo">
+                            <p>You haven't created any polls yet.</p>
                         </div>
-                    ))
-                ) : (
-                    <p className="text-center text-gray-500">You haven't created any polls yet.</p>
-                )}
-            </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

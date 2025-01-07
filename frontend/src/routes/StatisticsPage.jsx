@@ -65,7 +65,7 @@ const StatisticsPage = () => {
             <Link className='inline' to={`/sondages/user/${localStorage.getItem("id_user")}`}>
                 <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='<--'></Button>
             </Link>
-            <h1 className="text-center text-3xl font-bold mb-4">
+            <h1 className="text-white  text-center text-3xl font-bold mb-4">
                 Statistics for: {statistics.sondage}
             </h1>
             {statistics.statistics.map((question, index) => (

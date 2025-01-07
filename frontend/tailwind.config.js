@@ -9,7 +9,8 @@ export default {
       colors : {
         "DeepTale" : "#0A6464",
         "SoftCoral" : "#FA9684",
-        "MutedCyan":"#0A8C8C"
+        "MutedCyan":"#0A8C8C",
+        "MutedCyan0.1":"rgb(230, 239, 239)"
       }
     },
   },

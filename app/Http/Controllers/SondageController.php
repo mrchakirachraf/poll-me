@@ -16,7 +16,15 @@ class SondageController extends Controller
 {
     public function index()
     {
-        return Sondage::orderBy('created_at', 'desc')->get();
+        $sondages = Sondage::orderBy('created_at', 'desc')->get();
+    
+        if ($sondages->isEmpty()) {
+            return response()->json([
+                'message' => 'No available polls.',
+            ], 404);
+        }
+    
+        return response()->json($sondages, 200);
     }
 
     
@@ -79,7 +87,7 @@ class SondageController extends Controller
                 'message' => 'Survey created successfully!',
                 'sondage' => $sondage->load('questions.options'),
             ], 200);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             // Handle validation errors
             return response()->json([
                 'message' => 'Validation failed.',
@@ -121,7 +129,7 @@ class SondageController extends Controller
             }
 
             return response()->json(['message' => 'Responses saved successfully!'], 200);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Validation failed.',
                 'errors' => $e->errors(),

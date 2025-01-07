@@ -97,7 +97,7 @@ const PollPage = () => {
     }
 
     return (
-        <div className={styles.PollPage_container}>
+        <div className={`${styles.PollPage_container} text-DeepTale bg-MutedCyan0.1 p-8 lg:p-12 rounded-2xl my-10`}>
             <h1 className="text-center text-3xl font-bold">{poll.title}</h1>
             <p className="text-center text-xl my-4 mb-4">{poll.description}</p>
             {poll.questions.map((question) => (
