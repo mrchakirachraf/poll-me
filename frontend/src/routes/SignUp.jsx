@@ -40,7 +40,7 @@ const SignUp = () => {
         <div className={styles.PollMe_container}>
             <div id={styles.overlay}>
                 <div id={styles.logo}>
-                    {/* Here we will add the logo image */}
+                    <img className="w-full h-full" src="src/assets/white PollMe.png" alt="" />
                 </div>
                 <div>
                     <form onSubmit={handleSignUp} method='post'>
