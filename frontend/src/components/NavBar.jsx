@@ -37,7 +37,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <img className="w-full h-full" src="src/assets/DeepTale PollMe.png" alt="" />
+        <Link to="/home-page" className={styles.navItem}><img className="w-full h-full" src="./src/assets/DeepTale PollMe.png" alt="" /></Link>
       </div>
       <div className={styles.navLinks}>
         <Link to="/home-page" className={styles.navItem}>Home</Link>

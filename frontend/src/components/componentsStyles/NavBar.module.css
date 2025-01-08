@@ -67,7 +67,9 @@
   
   /* Sidebar */
   .sidebar {
-    display: none;
+    /* display: none; */
+    display: flex;
+    visibility: hidden;
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -77,10 +79,14 @@
     padding: 1rem;
     z-index: 10;
     border-bottom: 1px solid #0a6464;
+    opacity: 0;
+    transition: opacity 0.4s ease, visibility 0.3s ease;
   }
   
   .sidebar.show {
-    display: flex;
+    /* display: flex; */
+    visibility: visible;
+    opacity: 1;
   }
   
   .sidebar .navItem {
