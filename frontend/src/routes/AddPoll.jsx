@@ -87,7 +87,7 @@ const AddPoll = () => {
             <div className="relative">
                 <h1 className="text-white text-3xl text-center font-bold mb-10">Add New Poll</h1>
                 <Link className='inline absolute top-0 left-0' to={`/sondages/user/${localStorage.getItem("id_user")}`}>
-                    <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='<--'></Button>
+                    <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='⏴ Back'></Button>
                 </Link>
             </div>
             {error && <p className="alertDanger">{error}</p>}

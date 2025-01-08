@@ -126,7 +126,7 @@ const UpdatePoll = () => {
       <div className="relative">
         <h1 className="text-white  text-3xl text-center font-bold mb-10">Update Poll</h1>
         <Link className='inline absolute top-0 left-0' to={`/sondages/user/${localStorage.getItem("id_user")}`}>
-            <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='<--'></Button>
+            <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='⏴ Back'></Button>
         </Link>
       </div>
       <form className="bg-MutedCyan0.1 p-4 lg:p-12 rounded-2xl mb-10" onSubmit={handleSubmit}>

@@ -88,32 +88,41 @@ const PollPage = () => {
         }
     };
     
-    if (loading) {
-        return <p className="alertInfo">Loading...</p>;
-    }
-
-    if (errorMessage) {
-        return <p className="alertDanger">{errorMessage}</p>;
-    }
+    
 
     return (
         <div className={`${styles.PollPage_container} text-DeepTale bg-MutedCyan0.1 p-8 lg:p-12 rounded-2xl my-10`}>
-            <h1 className="text-center text-3xl font-bold">{poll.title}</h1>
-            <p className="text-center text-xl my-4 mb-4">{poll.description}</p>
-            {poll.questions.map((question) => (
-                <Question
-                    key={question.id_question}
-                    question={question}
-                    response={responses[question.id_question] || (question.type === 'choix_multiple' ? [] : '')}
-                    onChange={handleResponseChange}
-                />
-            ))}
-            <div className={`${styles.buttonsGroup} mt-5`}>
-                <button onClick={handleSubmit} className="btn_DeepTale w-32 lg:w-52">Submit</button>
-                <Link className='inline' to="/home-page">
-                    <Button style={{}} class="btn_DeepTale w-32 lg:w-52" text='Go Back'></Button>
-                </Link>
-            </div>
+            {loading ? (
+                <p className="alertInfo">Loading...</p>
+            ) : errorMessage ? (
+                <div className='relative'>
+                    <Link className='inline relative top-0 left-0' to={`/home-page`}>
+                        <Button style={{}} class="btn_MutedCyan  mb-10 w-20 lg:w-32" text='⏴ Back'></Button>
+                    </Link>
+                    
+                    <p className="alertDanger">{errorMessage}</p>
+                </div>
+            ) : (
+                <div>
+                    <h1 className="text-center text-3xl font-bold">{poll.title}</h1>
+                    <p className="text-center text-xl my-4 mb-4">{poll.description}</p>
+                    {poll.questions.map((question) => (
+                        <Question
+                            key={question.id_question}
+                            question={question}
+                            response={responses[question.id_question] || (question.type === 'choix_multiple' ? [] : '')}
+                            onChange={handleResponseChange}
+                        />
+                    ))}
+                    <div className={`${styles.buttonsGroup} mt-5`}>
+                        <button onClick={handleSubmit} className="btn_DeepTale w-32 lg:w-52">Submit</button>
+                        <Link className='inline' to="/home-page">
+                            <Button style={{}} class="btn_DeepTale w-32 lg:w-52" text='Go Back'></Button>
+                        </Link>
+                    </div>
+                </div>
+                
+            )}
         </div>
     );
 };
