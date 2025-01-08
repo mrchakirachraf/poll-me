@@ -115,10 +115,10 @@ const PollPage = () => {
                         />
                     ))}
                     <div className={`${styles.buttonsGroup} mt-5`}>
-                        <button onClick={handleSubmit} className="btn_DeepTale w-32 lg:w-52">Submit</button>
                         <Link className='inline' to="/home-page">
                             <Button style={{}} class="btn_DeepTale w-32 lg:w-52" text='Go Back'></Button>
                         </Link>
+                        <button onClick={handleSubmit} className="btn_DeepTale w-32 lg:w-52">Submit</button>
                     </div>
                 </div>
                 

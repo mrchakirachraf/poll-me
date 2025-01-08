@@ -19,12 +19,38 @@ class AuthController extends Controller
 
         // Check if validation fails
         if ($validator->fails()) {
+            $errors = $validator->errors();
+
+            $message = '';
+
+            if ($errors->has('name')) {
+                if ($errors->first('name') === 'The name field is required.') {
+                    $message = 'Name is required.';
+                } elseif ($errors->first('name') === 'The name may not be greater than 255 characters.') {
+                    $message = 'Name must not exceed 255 characters.';
+                }
+            } elseif ($errors->has('email')) {
+                if ($errors->first('email') === 'The email field is required.') {
+                    $message = 'Email is required.';
+                } elseif ($errors->first('email') === 'The email has already been taken.') {
+                    $message = 'This email is already registered.';
+                } elseif ($errors->first('email') === 'The email must be a valid email address.') {
+                    $message = 'Please provide a valid email address.';
+                }
+            } elseif ($errors->has('password')) {
+                if ($errors->first('password') === 'The password field is required.') {
+                    $message = 'Password is required.';
+                } elseif ($errors->first('password') === 'The password must be at least 8 characters.') {
+                    $message = 'Password must be at least 8 characters long.';
+                }
+            }
+
             return response()->json([
                 'success' => false,
-                'message' => 'Validation errors occurred.',
-                'errors' => $validator->errors()
-            ], 422); // 422 Unprocessable Entity
+                'message' => $message,
+            ], 422);
         }
+
 
         // Create the user
         $user = User::create([
@@ -51,12 +77,29 @@ class AuthController extends Controller
 
         // Check if validation fails
         if ($validator->fails()) {
+            $errors = $validator->errors();
+
+            $message = '';
+
+            if ($errors->has('email')) {
+                if ($errors->first('email') === 'The email field is required.') {
+                    $message = 'Please provide your email address.';
+                } elseif ($errors->first('email') === 'The email must be a valid email address.') {
+                    $message = 'Please provide a valid email address.';
+                }
+            } elseif ($errors->has('password')) {
+                if ($errors->first('password') === 'The password field is required.') {
+                    $message = 'Password is required to proceed.';
+                }
+            }
+
             return response()->json([
                 'success' => false,
-                'message' => 'Validation errors occurred.',
-                'errors' => $validator->errors()
-            ], 422); // 422 Unprocessable Entity
+                'message' => $message,
+            ], 422);
         }
+
+
 
         // Retrieve the user by email
         $user = User::where('email', $request->email)->first();

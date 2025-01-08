@@ -31,14 +31,30 @@ const AddPoll = () => {
         setPollData({ ...pollData, questions: updatedQuestions });
     };
 
+    // const addQuestion = () => {
+    //     setPollData({
+    //     ...pollData,
+    //     questions: [
+    //         ...pollData.questions,
+    //         { text: "", type: "choix_unique", options: [""] },
+    //     ],
+    //     });
+    // };
+
     const addQuestion = () => {
+        if (pollData.questions.length >= 10) {
+            setError("You cannot add more than 10 questions.");
+            return;
+        }
+    
         setPollData({
-        ...pollData,
-        questions: [
-            ...pollData.questions,
-            { text: "", type: "choix_unique", options: [""] },
-        ],
+            ...pollData,
+            questions: [
+                ...pollData.questions,
+                { text: "", type: "choix_unique", options: [""] },
+            ],
         });
+        setError("");
     };
 
     const addOption = (qIndex) => {
@@ -90,7 +106,6 @@ const AddPoll = () => {
                     <Button style={{}} class="btn_MutedCyan w-20 lg:w-32" text='⏴ Back'></Button>
                 </Link>
             </div>
-            {error && <p className="alertDanger">{error}</p>}
             <form className="bg-MutedCyan0.1 p-4 lg:p-12 rounded-2xl mb-10" onSubmit={handleSubmit}>
                 <div className="mb-4">
                 <label className="block text-DeepTale text-xl lg:text-2xl font-bold mb-2">Title</label>
@@ -189,6 +204,7 @@ const AddPoll = () => {
                     </button>
                 </div>
             </form>
+            {error && <p className="alertDanger">{error}</p>}
         </div>
     );
 };

@@ -87,12 +87,14 @@ const SignUp = () => {
                             </div>
                         )}
                         <div className={`${styles.buttonsGroup}`}>
-                            <button type='submit' className="btn_DeepTale w-32 lg:w-52">
-                                Sign Up
-                            </button>
                             <Link className='inline' to="/signin">
-                                <Button style={{}} class="btn_DeepTale w-32 lg:w-52" text='Go Back'></Button>
+                                <Button style={{}} class="btn_DeepTale w-fit sm:28 md:32 lg:w-36 xl:w-52" text='Go Back'></Button>
                             </Link>
+                            <div>
+                                <button type='submit' className="btn_DeepTale w-fit sm:28 md:32 lg:w-36 xl:w-52">
+                                    Sign Up
+                                </button>
+                            </div>
                         </div>
                         <span style={{ textAlign: 'center' }}>
                             Already have an account? &nbsp;
