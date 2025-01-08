@@ -29,7 +29,7 @@ const Question = ({ question, response, onChange }) => {
                                     : response.includes(option.id_option)
                             }
                             onChange={() => handleOptionChange(option.id_option)}
-                        />
+                        required />
                         {option.text}
                     </label>
                 ))}

@@ -77,26 +77,49 @@ const AddPoll = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-        const response = await fetch("http://127.0.0.1:8000/api/sondages", {
-            method: "POST",
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(pollData),
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || "Failed to add poll. Please try again.");
+    
+        // Check if there are any questions
+        if (pollData.questions.length === 0) {
+            setError("You must add at least one question to create a poll.");
+            return;
         }
-
-        navigate(`/sondages/user/${localStorage.getItem("id_user")}`);
+    
+        // Check if all questions have text and options
+        for (let i = 0; i < pollData.questions.length; i++) {
+            const question = pollData.questions[i];
+            if (!question.text.trim()) {
+                setError(`Question ${i + 1} must have text.`);
+                return;
+            }
+            if (question.options.length === 0) {
+                setError(`Question ${i + 1} must have at least one option.`);
+                return;
+            }
+        }
+    
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/sondages", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(pollData),
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Failed to add poll. Please try again.");
+            }
+    
+            navigate(`/sondages/user/${localStorage.getItem("id_user")}`);
         } catch (error) {
-        setError(error.message);
+            setError(error.message);
         }
     };
+    
+
+
 
     return (
         <div className="container mx-auto lg:px-28 mt-10">

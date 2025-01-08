@@ -68,14 +68,29 @@ const UpdatePoll = () => {
     setPollData({ ...pollData, questions: updatedQuestions });
   };
 
+  // const addQuestion = () => {
+  //   setPollData({
+  //     ...pollData,
+  //     questions: [
+  //       ...pollData.questions,
+  //       { text: "", type: "choix_unique", options: [""] },
+  //     ],
+  //   });
+  // };
   const addQuestion = () => {
-    setPollData({
-      ...pollData,
-      questions: [
-        ...pollData.questions,
-        { text: "", type: "choix_unique", options: [""] },
-      ],
-    });
+      if (pollData.questions.length >= 10) {
+          setError("You cannot add more than 10 questions.");
+          return;
+      }
+
+      setPollData({
+          ...pollData,
+          questions: [
+              ...pollData.questions,
+              { text: "", type: "choix_unique", options: [""] },
+          ],
+      });
+      setError("");
   };
 
   const addOption = (qIndex) => {
