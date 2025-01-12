@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./componentsStyles/NavBar.module.css";
+import logo from '../assets/DeepTale PollMe.png';
+
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +39,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <Link to="/home-page" className={styles.navItem}><img className="w-full h-full" src="./src/assets/DeepTale PollMe.png" alt="" /></Link>
+        <Link to="/home-page" className={styles.navItem}><img className="w-full h-full" src={logo} alt="" /></Link>
       </div>
       <div className={styles.navLinks}>
         <Link to="/home-page" className={styles.navItem}>Home</Link>
