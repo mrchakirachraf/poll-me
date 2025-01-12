@@ -46,8 +46,21 @@ const PollPage = () => {
             [questionId]: value,
         }));
     };
-
     const handleSubmit = async () => {
+        // Check if all required questions have been answered
+        const unansweredQuestions = poll.questions.filter((question) => {
+            const response = responses[question.id_question];
+            return (
+                !response || // No response
+                (Array.isArray(response) && response.length === 0) // Empty multiple-choice response
+            );
+        });
+    
+        if (unansweredQuestions.length > 0) {
+            setErrorMessage('Please answer all required questions before submitting.');
+            return;
+        }
+    
         // Format the responses into the required API body
         const formattedResponses = Object.entries(responses).flatMap(([questionId, value]) => {
             if (Array.isArray(value)) {
@@ -89,17 +102,18 @@ const PollPage = () => {
     };
     
     
+    
 
     return (
         <div className={`${styles.PollPage_container} text-DeepTale bg-MutedCyan0.1 p-8 lg:p-12 rounded-2xl my-10`}>
             {loading ? (
                 <p className="alertInfo">Loading...</p>
-            ) : errorMessage ? (
-                <div className='relative'>
-                    <Link className='inline relative top-0 left-0' to={`/home-page`}>
-                        <Button style={{}} class="btn_MutedCyan  mb-10 w-20 lg:w-32" text='⏴ Back'></Button>
+            ) : errorMessage && errorMessage !== 'Please answer all required questions before submitting.' ? (
+                <div className="relative">
+                    <Link className="inline relative top-0 left-0" to={`/home-page`}>
+                        <Button style={{}} class="btn_MutedCyan mb-10 w-20 lg:w-32" text="⏴ Back"></Button>
                     </Link>
-                    
+
                     <p className="alertDanger">{errorMessage}</p>
                 </div>
             ) : (
@@ -110,18 +124,24 @@ const PollPage = () => {
                         <Question
                             key={question.id_question}
                             question={question}
-                            response={responses[question.id_question] || (question.type === 'choix_multiple' ? [] : '')}
+                            response={
+                                responses[question.id_question] || (question.type === 'choix_multiple' ? [] : '')
+                            }
                             onChange={handleResponseChange}
                         />
                     ))}
+                    {errorMessage === 'Please answer all required questions before submitting.' && (
+                        <p className="alertDanger mb-4">{errorMessage}</p>
+                    )}
                     <div className={`${styles.buttonsGroup} mt-5`}>
-                        <Link className='inline' to="/home-page">
-                            <Button style={{}} class="btn_DeepTale w-32 lg:w-52" text='Go Back'></Button>
+                        <Link className="inline" to="/home-page">
+                            <Button style={{}} class="btn_DeepTale w-32 lg:w-52" text="Go Back"></Button>
                         </Link>
-                        <button onClick={handleSubmit} className="btn_DeepTale w-32 lg:w-52">Submit</button>
+                        <button onClick={handleSubmit} className="btn_DeepTale w-32 lg:w-52">
+                            Submit
+                        </button>
                     </div>
                 </div>
-                
             )}
         </div>
     );
